@@ -15,8 +15,8 @@ import HumDef from "../component/HumDef";
 import Iglob from "../component/Iglob";
 import RadSum from "../component/RadSum";
 import PipeGrow from "../component/PipeGrow";
-import PipeLow from "../component/PipeLow ";
 import Tout from "../component/Tout";
+import PipeLow from "../component/PipeLow";
 
 const Chart = (props) => {
   const dispatch = useDispatch();

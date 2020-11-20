@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import { useDispatch, useSelector } from "react-redux";
-import { loadChart } from "../reducer/chart";
+import { loadChart, loadChart2 } from "../reducer/chart";
 
-const HighChart = (props) => {
+const EC_slab1 = (props) => {
   const dispatch = useDispatch();
   const series2 = useSelector((state) => state?.chart[0]);
   console.log("highchart", series2);
@@ -14,72 +14,25 @@ const HighChart = (props) => {
   const time = useSelector((state) =>
     state.chart[0]?.dataset.map((el) => el.time)
   );
-  const EC_drain_PC = useSelector((state) =>
-    state.chart[0]?.dataset.map((el) => el.EC_drain_PC)
-  );
   const EC_slab1 = useSelector((state) =>
     state.chart[0]?.dataset.map((el) => el.EC_slab1)
   );
-  const EC_slab2 = useSelector((state) =>
-    state.chart[0]?.dataset.map((el) => el.EC_slab2)
-  );
-  const WC_slab1 = useSelector((state) =>
-    state.chart[0]?.dataset.map((el) => el.WC_slab1)
-  );
-  const WC_slab2 = useSelector((state) =>
-    state.chart[0]?.dataset.map((el) => el.WC_slab2)
-  );
-  const CO2air = useSelector((state) =>
-    state.chart[0]?.dataset.map((el) => el.CO2air)
-  );
-  const HumDef = useSelector((state) =>
-    state.chart[0]?.dataset.map((el) => el.HumDef)
-  );
-  const Rhair = useSelector((state) =>
-    state.chart[0]?.dataset.map((el) => el.Rhair)
-  );
-  const Tair = useSelector((state) =>
-    state.chart[0]?.dataset.map((el) => el.Tair)
-  );
-  const EnScr = useSelector((state) =>
-    state.chart[0]?.dataset.map((el) => el.EnScr)
-  );
-  const BlackScr = useSelector((state) =>
-    state.chart[0]?.dataset.map((el) => el.BlackScr)
-  );
-  const Iglob = useSelector((state) =>
-    state.chart[0]?.dataset.map((el) => el.Iglob)
-  );
-  const RadSum = useSelector((state) =>
-    state.chart[0]?.dataset.map((el) => el.RadSum)
-  );
-  const PipeGrow = useSelector((state) =>
-    state.chart[0]?.dataset.map((el) => el.PipeGrow)
-  );
-  const PipeLow = useSelector((state) =>
-    state.chart[0]?.dataset.map((el) => el.PipeLow)
-  );
-  const Tout = useSelector((state) =>
-    state.chart[0]?.dataset.map((el) => el.Tout)
-  );
 
   const ex = useSelector((state) =>
-    state.chart[0]?.dataset.map((el) => [
-      el.time.charCodeAt(0).toString(16),
-      el.EC_drain_PC,
-    ])
+    state.chart[0]?.dataset.map((el) => [el.time, el.EC_slab1])
   );
 
   console.log("time", ex);
   useEffect(() => {
     dispatch(loadChart());
+    // dispatch(loadChart2());
   }, []);
   const options = {
     chart: {
       zoomType: "x", // bar차트. 아무 설정이 없으면 line chart가 된다.
     },
     title: {
-      text: "chart",
+      text: "EC_slab1",
     },
     subtitle: {
       text:
@@ -92,7 +45,7 @@ const HighChart = (props) => {
     },
     yAxis: {
       title: {
-        text: "score",
+        text: "",
       },
     },
     legend: {
@@ -129,7 +82,7 @@ const HighChart = (props) => {
         threshold: null,
       },
     },
-    series: [{ name: "data", data: ex }],
+    series: [{ name: "data", data: EC_slab1 }],
   };
   return (
     <form>
@@ -138,4 +91,4 @@ const HighChart = (props) => {
   );
 };
 
-export default HighChart;
+export default EC_slab1;

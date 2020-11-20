@@ -4,7 +4,7 @@
 
 React /
 Hooks /
-Redux /
+React-Redux /
 Redux-saga /
 highcharts /
 

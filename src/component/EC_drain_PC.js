@@ -38,7 +38,7 @@ const EC_drain_PC = (props) => {
           : "Pinch the chart to zoom in",
     },
     xAxis: {
-      type: time,
+      type: "datetime",
     },
     yAxis: {
       title: {
